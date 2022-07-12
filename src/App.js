@@ -28,7 +28,7 @@ function App() {
                 </div>
               ) :
               (
-                <div className="w-72 dark:bg-secondary-dark-bg">
+                <div className="w-0 dark:bg-secondary-dark-bg">
                   <Sidebar />
                 </div>
               )
