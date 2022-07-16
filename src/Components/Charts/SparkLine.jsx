@@ -1,8 +1,10 @@
 import React from 'react';
 import { SparklineComponent, Inject, SparklineTooltip, TrackLineSettings } from '@syncfusion/ej2-react-charts';
 
-export const SparkLine = ({ currentColor, id, type, height, width, data, color }) => {
-  return (<SparklineComponent
+class SparkLine extends React.PureComponent {
+  render() {
+    const { currentColor, id, type, height, width, data, color } = this.props;
+    return (<SparklineComponent
       id={id}
       height={height}
       width={width}
@@ -16,12 +18,18 @@ export const SparkLine = ({ currentColor, id, type, height, width, data, color }
       type={type}
       tooltipSettings={{
         visible: true,
+        // eslint-disable-next-line no-template-curly-in-string
         format: '${x} : data ${yval}',
         trackLineSettings: {
           visible: true
         }
       }}
+      markerSettings={{ visible: ['All'], size: 2.5, fill: currentColor }}
+
     >
       <Inject services={[SparklineTooltip]} />
     </SparklineComponent>);
+  }
 }
+
+export { SparkLine };
