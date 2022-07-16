@@ -10,7 +10,7 @@ export { UserProfile } from './UserProfile';
 export { SparkLine } from './Charts/SparkLine';
 export { LineChart } from './Charts/LineChart';
 export { Stacked } from './Charts/Stacked';
-export { Pie } from './Charts/Pie';
+export { Doughnut as PieChart } from './Charts/Pie';
 export { ChartsHeader } from './ChartsHeader';
 export { Header } from './Header';
 
