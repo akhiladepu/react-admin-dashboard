@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { AiOutlineMenu } from 'react-icons/ai';
 import { FiShoppingCart } from 'react-icons/fi';
 import { BsChatLeft } from 'react-icons/bs';
 import { RiNotification3Line } from 'react-icons/ri';
@@ -8,6 +7,7 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import avatar from '../Data/avatar.jpg';
 import { Cart, Chat, Notification, UserProfile } from '.';
 import { useStateContext } from '../Contexts/ContextProvider';
+
 
 const NavButton = ({ title, customFunction, icon, color, dotColor }) => {
   return (
@@ -43,7 +43,7 @@ export const Navbar = () => {
 
   return (
     <div className='flex justify-between p-2 md:mx-6 relative'>
-      <NavButton title="Menu" customFunction={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)} color={currentColor} icon={<AiOutlineMenu />} />
+      <div></div>
       <div className='flex'>
         <NavButton title="Cart" customFunction={() => handleClick('cart')} color={currentColor} icon={<FiShoppingCart />} />
         <NavButton title="Chat" dotColor="#03C9D7" customFunction={() => handleClick('chat')} color={ currentColor} icon={<BsChatLeft />} />

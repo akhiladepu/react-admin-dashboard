@@ -1,14 +1,26 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
+import { AiOutlineMenu, AiOutlineArrowLeft } from 'react-icons/ai';
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import { Navbar, Footer, Sidebar, ThemeSettings } from "./Components";
 import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Area, Line, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor } from "./Pages"
 import "./App.css";
 import { useStateContext } from './Contexts/ContextProvider';
 
+const NavButton = ({ title, customFunction, icon, color, dotColor }) => {
+  return (
+    <TooltipComponent content={title} position="BottomCenter">
+      <button type="button" onClick={customFunction} style={{ color }} className='relative text-xl rounded-full p-3 hover:bg-light-gray'>
+        <span style={{ background: dotColor }} className='absolute inline-flex rounded-full h-2 w-2 right-2 top-2' />
+        {icon}
+      </button>
+    </TooltipComponent>
+  )
+};
+
 function App() {
-  const { activeMenu, themeSettings, setThemeSettings, currentColor, currentMode } = useStateContext();
+  const { activeMenu, themeSettings, setThemeSettings, currentColor, currentMode, setActiveMenu } = useStateContext();
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
       <BrowserRouter>
@@ -20,19 +32,25 @@ function App() {
               </button>
             </TooltipComponent>
           </div>
-          {
-            activeMenu ?
-              (
-                <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
-                  <Sidebar />
-                </div>
-              ) :
-              (
-                <div className="w-0 dark:bg-secondary-dark-bg">
-                  <Sidebar />
-                </div>
-              )
-          }
+          <>
+            {
+              activeMenu ?
+                (
+                  <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
+                    <Sidebar />
+                  </div>
+                ) :
+                (
+                  <div className="w-0 dark:bg-secondary-dark-bg">
+                    <Sidebar />
+                  </div>
+                )
+            }
+            <div className={`flex fixed sidebar top-2 ${activeMenu ? 'left-[18rem]' : 'left-2'} bg-none rounded-full`} >
+              {/*  ${activeMenu ? 'left-[18rem]' : 'left-2'} */}
+              <NavButton title="Menu" customFunction={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)} color={currentColor} icon={activeMenu ? <AiOutlineArrowLeft /> : <AiOutlineMenu />} />
+            </div>
+          </>
           <div className={`dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${activeMenu ? 'md:ml-72' : 'flex-2'}`}>
             <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full">
               <Navbar />
