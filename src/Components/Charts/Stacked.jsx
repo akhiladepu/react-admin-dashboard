@@ -1,8 +1,11 @@
 import React from 'react';
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Legend, Category, StackingColumnSeries, Tooltip } from '@syncfusion/ej2-react-charts';
 import { stackedCustomSeries, stackedPrimaryXAxis, stackedPrimaryYAxis } from "../../Data/dummy";
+import { useStateContext } from '../../Contexts/ContextProvider';
 
 export const Stacked = ({ width, height }) => {
+  const { currentMode, currentColor } = useStateContext();
+
   return (<ChartComponent
     width={width}
     height={height}
@@ -15,11 +18,14 @@ export const Stacked = ({ width, height }) => {
     tooltip={{
       enable: true
     }}
-    legendSettings={{background: "white"}}
+    legendSettings={{
+      background: "white"
+    }}
+    background={currentMode === 'Dark' ? '#33373E' : '#fff'}
   >
     <Inject services={[Legend, Category, StackingColumnSeries, Tooltip]} />
     <SeriesCollectionDirective>
-      {stackedCustomSeries.map((item, index) => <SeriesDirective key={index} {...item} />)}
+      {stackedCustomSeries.map((item, index) => <SeriesDirective key={index} {...item} fill={index === 0 ? currentColor : item.fill} />)}
     </SeriesCollectionDirective>
   </ChartComponent>);
 }

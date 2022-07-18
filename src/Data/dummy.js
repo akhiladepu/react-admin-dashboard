@@ -22,7 +22,7 @@ import product5 from './product5.jpg';
 import product6 from './product6.jpg';
 import product7 from './product7.jpg';
 import product8 from './product8.jpg';
-
+import { useStateContext } from '../Contexts/ContextProvider';
 export const gridOrderImage = (props) => (
   <div>
     <img
@@ -3204,16 +3204,16 @@ export const stackedChartData = [
     { x: 'Feb', y: 127.3 },
     { x: 'Mar', y: 143.4 },
     { x: 'Apr', y: 159.9 },
-    { x: 'May', y: 159.9 },
+    { x: 'May', y: 179.9 },
     { x: 'Jun', y: 159.9 },
-    { x: 'July', y: 159.9 },
+    { x: 'July', y: 199.9 },
   ],
   [
     { x: 'Jan', y: 111.1 },
     { x: 'Feb', y: 127.3 },
     { x: 'Mar', y: 143.4 },
     { x: 'Apr', y: 159.9 },
-    { x: 'May', y: 159.9 },
+    { x: 'May', y: 169.9 },
     { x: 'Jun', y: 159.9 },
     { x: 'July', y: 159.9 },
   ],
@@ -3227,8 +3227,8 @@ export const stackedCustomSeries = [
     yName: 'y',
     name: 'Budget',
     type: 'StackingColumn',
-    background: 'blue',
-
+    // fill: 'blue',
+    //will be taken care at the component
   },
 
   {
@@ -3237,8 +3237,7 @@ export const stackedCustomSeries = [
     yName: 'y',
     name: 'Expense',
     type: 'StackingColumn',
-    background: 'red',
-
+    fill: 'rgb(100,116,139)',
   },
 
 ];
@@ -5917,3 +5916,5 @@ export const PyramidData = [
   { x: 'Fruits', y: 520, text: '520 cal' },
   { x: 'Bread, Rice, Pasta', y: 930, text: '930 cal' },
 ];
+
+export const darkModeColors = []

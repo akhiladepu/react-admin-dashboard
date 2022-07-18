@@ -60,7 +60,7 @@ export const Ecommerce = () => {
           <div className='flex justify-between'>
             <p className='font-semibold text-xl'>Revenue Updates</p>
             <div className='flex items-center gap-4'>
-              <p className='flex items-center gap-2 text-gray-600 hover:drop-shadow-xl'>
+              <p className='flex items-center gap-2 text-slate-500 hover:drop-shadow-xl'>
                 <span>
                   <GoPrimitiveDot />
                 </span>
@@ -68,7 +68,7 @@ export const Ecommerce = () => {
                   Expense
                 </span>
               </p>
-              <p className='flex items-center gap-2 text-green-400 hover:drop-shadow-xl'>
+              <p className='flex items-center gap-2 hover:drop-shadow-xl' style={{ color: currentColor }}>
                 <span>
                   <GoPrimitiveDot />
                 </span>
@@ -83,7 +83,7 @@ export const Ecommerce = () => {
               <div>
                 <p>
                   <span className='text-3xl font-semibold'>$93,438</span>
-                  <span className='text-xs p-1.5 hover:drop-shadow-xl cursor-pointer rounded-full text-white bg-green-400 ml-3'>23%</span>
+                  <span className={`text-xs p-1.5 hover:drop-shadow-xl cursor-pointer rounded-full text-white bg-[${currentColor}] ml-3`}>23%</span>
                 </p>
                 <p className='text-gray-500 mt-1'>Budget</p>
               </div>
@@ -186,7 +186,7 @@ export const Ecommerce = () => {
         </div>
       </div>
 
-      
+
       <div className="flex flex-wrap justify-center">
         <div className="md:w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
           <div className="flex justify-between">
@@ -220,7 +220,7 @@ export const Ecommerce = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
           <div className="flex justify-between">
             <p className="text-xl font-semibold">MedicalPro Branding</p>

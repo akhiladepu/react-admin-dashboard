@@ -9,3 +9,14 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* .e-row, .e-headercell {
+    background-color: rgb(30, 30, 208) !important;
+} 
+*/
+
+/* .secondary-dark-color{
+    background-color: #33373E;
+    color:white;
+} */
+

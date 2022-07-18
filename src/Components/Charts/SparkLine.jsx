@@ -2,10 +2,10 @@ import React from 'react';
 import { SparklineComponent, Inject, SparklineTooltip, TrackLineSettings } from '@syncfusion/ej2-react-charts';
 
 class SparkLine extends React.PureComponent {
+  // static context = useStateContext();
   render() {
     const { currentColor, id, type, height, width, data, color } = this.props;
-    // console.log(currentColor, id, type, height, width, data, color);
-
+    
     return (
       <SparklineComponent
         id={id}
@@ -28,7 +28,6 @@ class SparkLine extends React.PureComponent {
           }
         }}
         markerSettings={{ visible: ['All'], size: 2.5, fill: currentColor }}
-
       >
         <Inject services={[SparklineTooltip]} />
       </SparklineComponent>

@@ -8,11 +8,14 @@ import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Ka
 import "./App.css";
 import { useStateContext } from './Contexts/ContextProvider';
 
-const NavButton = ({ title, customFunction, icon, color, dotColor, tooltipRef }) => {
+const NavButton = ({ title, customFunction, icon, color, dotColor }) => {
+  // , tooltipRef
   return (
-    <TooltipComponent id="menuTooltip" content={title} position="BottomCenter" ref={tooltipRef} closeDelay={1}>
+    <TooltipComponent content={title} position="BottomCenter" closeDelay={0.5}>
+      {/* id="menuTooltip"  */}
+      {/* ref={tooltipRef} */}
       {/* animation={{ open: { effect: 'FadeIn', duration: 50, delay: 0 }, close: { effect: 'FadeOut', duration: 50, delay: 0 } }} */}
-      <button type="button" onClick={customFunction} style={{ color }} className='relative text-xl rounded-full p-3 hover:bg-light-gray'>
+      <button type="button" onClick={customFunction} style={{ color }} className='relative text-xl rounded-full p-3 hover:bg-light-gray hover:dark:bg-secondary-dark-bg'>
         <span style={{ background: dotColor }} className='absolute inline-flex rounded-full h-2 w-2 right-2 top-2' />
         {icon}
       </button>
@@ -21,7 +24,7 @@ const NavButton = ({ title, customFunction, icon, color, dotColor, tooltipRef })
 };
 
 function App() {
-  const tooltipRef = useRef(null);
+  // const tooltipRef = useRef(null);
   const { activeMenu, themeSettings, setThemeSettings, currentColor, currentMode, setActiveMenu } = useStateContext();
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
@@ -57,7 +60,8 @@ function App() {
                 // tooltipRef.current.destroy();
                 // tooltipRef.current.refresh();
                 // Finally read the documentation, closeDelay parameter for tooltip is worked
-              }} color={currentColor} icon={activeMenu ? <AiOutlineArrowLeft /> : <AiOutlineMenu />} tooltipRef={tooltipRef} />
+              }} color={currentColor} icon={activeMenu ? <AiOutlineArrowLeft /> : <AiOutlineMenu />} />
+              {/* tooltipRef={tooltipRef} */}
             </div>
           </>
           <div className={`dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${activeMenu ? 'md:ml-72' : 'flex-2'}`}>
