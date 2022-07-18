@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useRef } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { AiOutlineMenu, AiOutlineArrowLeft } from 'react-icons/ai';
@@ -8,9 +8,10 @@ import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Ka
 import "./App.css";
 import { useStateContext } from './Contexts/ContextProvider';
 
-const NavButton = ({ title, customFunction, icon, color, dotColor }) => {
+const NavButton = ({ title, customFunction, icon, color, dotColor, tooltipRef }) => {
   return (
-    <TooltipComponent content={title} position="BottomCenter">
+    <TooltipComponent id="menuTooltip" content={title} position="BottomCenter" ref={tooltipRef} closeDelay={1}>
+      {/* animation={{ open: { effect: 'FadeIn', duration: 50, delay: 0 }, close: { effect: 'FadeOut', duration: 50, delay: 0 } }} */}
       <button type="button" onClick={customFunction} style={{ color }} className='relative text-xl rounded-full p-3 hover:bg-light-gray'>
         <span style={{ background: dotColor }} className='absolute inline-flex rounded-full h-2 w-2 right-2 top-2' />
         {icon}
@@ -20,6 +21,7 @@ const NavButton = ({ title, customFunction, icon, color, dotColor }) => {
 };
 
 function App() {
+  const tooltipRef = useRef(null);
   const { activeMenu, themeSettings, setThemeSettings, currentColor, currentMode, setActiveMenu } = useStateContext();
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
@@ -48,7 +50,14 @@ function App() {
             }
             <div className={`flex fixed sidebar top-2 ${activeMenu ? 'left-[18rem]' : 'left-2'} bg-none rounded-full`} >
               {/*  ${activeMenu ? 'left-[18rem]' : 'left-2'} */}
-              <NavButton title="Menu" customFunction={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)} color={currentColor} icon={activeMenu ? <AiOutlineArrowLeft /> : <AiOutlineMenu />} />
+              <NavButton title="Menu" customFunction={() => {
+                setActiveMenu((prevActiveMenu) => !prevActiveMenu);
+                // document.getElementsByClassName('e-popup-open').classList.add('hidden');
+                // console.log(document.getElementByrole('menuTooltip_3_content').style('class', 'hidden'));
+                // tooltipRef.current.destroy();
+                // tooltipRef.current.refresh();
+                // Finally read the documentation, closeDelay parameter for tooltip is worked
+              }} color={currentColor} icon={activeMenu ? <AiOutlineArrowLeft /> : <AiOutlineMenu />} tooltipRef={tooltipRef} />
             </div>
           </>
           <div className={`dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${activeMenu ? 'md:ml-72' : 'flex-2'}`}>
